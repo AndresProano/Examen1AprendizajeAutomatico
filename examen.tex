@@ -525,4 +525,55 @@ Las desviaciones estándar (± 0.42 para MAE y ± 0.94 para RMSE) son moderadas,
 
 \section{Ejercicio 2: Stroke Prediction Dataset}
 
+Se trabajará con el dataset Stroke Prediction que contiene información sobre pacientes y la predicción de accidentes cerebrovasculares.
+
+El dataset contiene las siguientes variables:
+\begin{itemize}
+\item id     Unique id
+\item gender       Gender of the patient
+\item age          Age of the patient
+\item hypertension Hypertension status 
+\item heart_disease Heart disease status 
+\item ever_married Has the patient being married 
+\item work_type    Type of work 
+\item residence_type Type of residence 
+\item avg_glucose_level Average glucose level
+\item bmi          Body mass index
+\item smoking_status Smoking status
+\item stroke       Stroke status 
+\end{itemize}
+
+\subsection{Base de Datos}
+
+Se utilizó el conjunto de datos Stroke Prediction disponible en la siguiente URL https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset.
+
+\begin{lstlisting}[language=Python, frame=single, basicstyle=\ttfamily\small, breaklines=true]
+# Install dependencies as needed:
+# pip install kagglehub[pandas-datasets]
+import kagglehub
+from kagglehub import KaggleDatasetAdapter
+
+# Load the latest version
+df = kagglehub.dataset_load(
+  KaggleDatasetAdapter.PANDAS,
+  "fedesoriano/stroke-prediction-dataset",
+  "healthcare-dataset-stroke-data.csv",
+  # Provide any additional arguments like 
+  # sql_query or pandas_kwargs. See the 
+  # documenation for more information:
+  # https://github.com/Kaggle/kagglehub/blob/main/README.md#kaggledatasetadapterpandas
+)
+
+print("First 5 records:", df.head())
+\end{lstlisting}
+
+\subsection{Pregunta de Investigación}
+
+¿Cuáles son los principales factores de riesgo para accidente cerebrovascular y cómo podemos predecir
+eficientemente pacientes en riesgo?
+
+\subsection{Tareas Requeridas}
+
+\subsubsection{Implementación de Modelos}
+
 \end{document}
