@@ -62,7 +62,7 @@ El dataset contiene las siguientes variables:
 \item  RAD      index of accessibility to radial highways
 \item  TAX      full-value property-tax rate per \$10,000
 \item  PTRATIO  pupil-teacher ratio by town
-\item  B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
+\item  B        $1000(Bk - 0.63)^2$ where Bk is the proportion of blacks by town
 \item  LSTAT    porcentaje de población de bajo estatus
 \item  MEDV     Median value of owner-occupied homes in \$1000's
 \end{itemize}
@@ -93,28 +93,28 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 % Primera fila
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/crim_medv.png}
+    \includegraphics[width=\textwidth]{images/crim_medv.png}
     \caption{\footnotesize Tasa de criminalidad per cápita}
     \label{fig:modelo_crim}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/zn_medv.png}
+    \includegraphics[width=\textwidth]{images/zn_medv.png}
     \caption{\footnotesize Proporción de terrenos residenciales}
     \label{fig:modelo_zn}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/indus_medv.png}
+    \includegraphics[width=\textwidth]{images/indus_medv.png}
     \caption{\footnotesize Proporción de terrenos industriales}
     \label{fig:modelo_indus}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/chas_medv.png}
+    \includegraphics[width=\textwidth]{images/chas_medv.png}
     \caption{\footnotesize Variable Dummy del Río Charles}
     \label{fig:modelo_chas}
 \end{subfigure}
@@ -124,28 +124,28 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 % Segunda fila
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/nox_medv.png}
+    \includegraphics[width=\textwidth]{images/nox_medv.png}
     \caption{\footnotesize Concentración de Óxidos de Nitrógeno}
     \label{fig:modelo_nox}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/rm_medv.png}
+    \includegraphics[width=\textwidth]{images/rm_medv.png}
     \caption{\footnotesize Número promedio de habitaciones}
     \label{fig:modelo_rm}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/age_medv.png}
+    \includegraphics[width=\textwidth]{images/age_medv.png}
     \caption{\footnotesize Edad}
     \label{fig:modelo_age}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/dis_medv.png}
+    \includegraphics[width=\textwidth]{images/dis_medv.png}
     \caption{\footnotesize Distancia a centros de empleo}
     \label{fig:modelo_dis}
 \end{subfigure}
@@ -154,28 +154,28 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/rad_medv.png}
+    \includegraphics[width=\textwidth]{images/rad_medv.png}
     \caption{\footnotesize Accesibilidad a autopistas radiales}
     \label{fig:modelo_rad}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/tax_medv.png}
+    \includegraphics[width=\textwidth]{images/tax_medv.png}
     \caption{\footnotesize Tasa de impuesto predial}
     \label{fig:modelo_tax}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/ptratio_medv.png}
+    \includegraphics[width=\textwidth]{images/ptratio_medv.png}
     \caption{\footnotesize Relación de Población por Área}
     \label{fig:modelo_ptratio}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/b_medv.png}
+    \includegraphics[width=\textwidth]{images/b_medv.png}
     \caption{\footnotesize Proporción de población negra}
     \label{fig:modelo_b}
 \end{subfigure}
@@ -184,7 +184,7 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{figures/lstat_medv.png}
+    \includegraphics[width=\textwidth]{images/lstat_medv.png}
     \caption{\footnotesize Porcentaje de población de bajo estatus}
     \label{fig:modelo_lstat}
 \end{subfigure}
@@ -227,8 +227,8 @@ mae_std = np.std(mae_scores_mlg, ddof=1)
 rmse_median = np.median(rmse_scores_mlg)
 rmse_std = np.std(rmse_scores_mlg, ddof=1)
 
-print(f"Gaussian Model – MAE: {mae_median:.2f} ± {mae_std:.2f}")
-print(f"Gaussian Model – RMSE: {rmse_median:.2f} ± {rmse_std:.2f}")
+print(f"Gaussian Model MAE: {mae_median:.2f} +/- {mae_std:.2f}")
+print(f"Gaussian Model RMSE: {rmse_median:.2f} +/- {rmse_std:.2f}")
 \end{lstlisting}
 
 Obteniendo los siguientes resultados:
@@ -242,7 +242,7 @@ Obteniendo los siguientes resultados:
 \toprule
 \textbf{Métrica} & \textbf{Valor} \\
 \midrule
-MAE & 3.39 ± 0.22  \\
+MAE & 3.39 +- 0.22  \\
 RMSE & 4.91 ± 0.45  \\
 \bottomrule
 \end{tabular}
