@@ -60,11 +60,11 @@ El dataset contiene las siguientes variables:
 \item  AGE      proportion of owner-occupied units built prior to 1940
 \item  DIS      weighted distances to five Boston employment centres
 \item  RAD      index of accessibility to radial highways
-\item  TAX      full-value property-tax rate per $10,000
+\item  TAX      full-value property-tax rate per \$10,000
 \item  PTRATIO  pupil-teacher ratio by town
 \item  B        1000(Bk - 0.63)^2 where Bk is the proportion of blacks by town
-\item  LSTAT    % lower status of the population
-\item  MEDV     Median value of owner-occupied homes in $1000's
+\item  LSTAT    porcentaje de población de bajo estatus
+\item  MEDV     Median value of owner-occupied homes in \$1000's
 \end{itemize}
 
 \subsection{Base de Datos}
@@ -93,26 +93,30 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 % Primera fila
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Embarazos}
-    \label{fig:modelo_pregnancies}
+    \includegraphics[width=\textwidth]{figures/crim_medv.png}
+    \caption{\footnotesize Tasa de criminalidad per cápita}
+    \label{fig:modelo_crim}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Glucosa}
-    \label{fig:modelo_glucose}
+    \includegraphics[width=\textwidth]{figures/zn_medv.png}
+    \caption{\footnotesize Proporción de terrenos residenciales}
+    \label{fig:modelo_zn}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Presión Arterial}
-    \label{fig:modelo_blood_pressure}
+    \includegraphics[width=\textwidth]{figures/indus_medv.png}
+    \caption{\footnotesize Proporción de terrenos industriales}
+    \label{fig:modelo_indus}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Grosor de Piel}
-    \label{fig:modelo_skin}
+    \includegraphics[width=\textwidth]{figures/chas_medv.png}
+    \caption{\footnotesize Variable Dummy del Río Charles}
+    \label{fig:modelo_chas}
 \end{subfigure}
 
 \vspace{0.2cm}
@@ -120,59 +124,111 @@ Antes de realizar los diferentes modelos, vamos a buscar significancia dentro de
 % Segunda fila
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Insulina}
-    \label{fig:modelo_insuline}
+    \includegraphics[width=\textwidth]{figures/nox_medv.png}
+    \caption{\footnotesize Concentración de Óxidos de Nitrógeno}
+    \label{fig:modelo_nox}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize BMI}
-    \label{fig:modelo_bmi}
+    \includegraphics[width=\textwidth]{figures/rm_medv.png}
+    \caption{\footnotesize Número promedio de habitaciones}
+    \label{fig:modelo_rm}
 \end{subfigure}
 \hfill
 \begin{subfigure}[t]{0.24\textwidth}
     \centering
-    \caption{\footnotesize Diabetes Pedigree}
-    \label{fig:modelo_diabetes}
-\end{subfigure}
-\hfill
-\begin{subfigure}[t]{0.24\textwidth}
-    \centering
+    \includegraphics[width=\textwidth]{figures/age_medv.png}
     \caption{\footnotesize Edad}
     \label{fig:modelo_age}
 \end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/dis_medv.png}
+    \caption{\footnotesize Distancia a centros de empleo}
+    \label{fig:modelo_dis}
+\end{subfigure}
 
-\caption{Distribución de variables por resultado de diabetes}
+\vspace{0.2cm}
+
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/rad_medv.png}
+    \caption{\footnotesize Accesibilidad a autopistas radiales}
+    \label{fig:modelo_rad}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/tax_medv.png}
+    \caption{\footnotesize Tasa de impuesto predial}
+    \label{fig:modelo_tax}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ptratio_medv.png}
+    \caption{\footnotesize Relación de Población por Área}
+    \label{fig:modelo_ptratio}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/b_medv.png}
+    \caption{\footnotesize Proporción de población negra}
+    \label{fig:modelo_b}
+\end{subfigure}
+
+\vspace{0.2cm}
+
+\begin{subfigure}[t]{0.24\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/lstat_medv.png}
+    \caption{\footnotesize Porcentaje de población de bajo estatus}
+    \label{fig:modelo_lstat}
+\end{subfigure}
+
+\caption{Distribución de variables por Valor Mediano de Viviendas}
 \label{fig:distribucion_variables}
 \end{figure}
 
-Como podemos observar, todas las variables son significativas al momento de presentar o no presentar diabetes. Por lo tanto, se utilizarán todas las variables para los diferentes modelos.
+Como podemos observar, todas las variables son significativas al momento de tomar en cuenta el precio de la casa. Por lo tanto, se utilizarán todas las variables para los diferentes modelos.
 
 \vspace{0.5cm}
 
-\subsection{Regresión Logística}
+\subsection{Modelo lineal Gaussiano (MLG)}
 
-Al realizar la regresión logística, primero nos encontramos con el problema de que se alcanzó el límite de iteraciones permitidas, por lo que escalamos los datos.
+Para realizar el MLG utilizamos el siguiente código:
 
 \begin{lstlisting}[language=Python, frame=single, basicstyle=\ttfamily\small, breaklines=true]
-x = muestra[['pregnancies', 'glucose', 'blood_pressure', 'skin_thickness',
-            'insulin', 'bmi', 'diabetes_pedigree', 'age']]
-y = muestra['outcome']
+splitter = ShuffleSplit(n_splits=50, test_size=0.3, random_state=42)
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, 
-                                                    random_state=4181, 
-                                                    shuffle=True)
+mae_scores_mlg, rmse_scores_mlg = [], []
 
-scaler = StandardScaler()
-x_train_scaled = scaler.fit_transform(x_train)
-x_test_scaled = scaler.transform(x_test)
+for train_index, test_index in splitter.split(x):
+    X_train, X_test = x[train_index], x[test_index]
+    y_train, y_test = y[train_index], y[test_index]
 
-modelo = LogisticRegression(penalty=None)
-modelo.fit(X=x_train_scaled, y=y_train)
+    X_train_sm = sm.add_constant(X_train, has_constant='add')
+    X_test_sm = sm.add_constant(X_test, has_constant='add')
 
-print("Intercept:", modelo.intercept_)
-print("Coeficientes:", list(zip(x.columns, modelo.coef_.flatten())))
-print("Exactitud en entrenamiento:", modelo.score(x_train_scaled, y_train))
+    model_gaussian = sm.GLM(y_train, X_train_sm, family=sm.families.Gaussian())
+    fitted = model_gaussian.fit()
+
+    y_pred_gaussian = fitted.predict(X_test_sm)
+
+    mae_scores_mlg.append(mean_absolute_error(y_test, y_pred_gaussian))
+    rmse_scores_mlg.append(mean_squared_error(y_test, y_pred_gaussian) ** 0.5)
+
+
+mae_median = np.median(mae_scores_mlg)
+mae_std = np.std(mae_scores_mlg, ddof=1)
+rmse_median = np.median(rmse_scores_mlg)
+rmse_std = np.std(rmse_scores_mlg, ddof=1)
+
+print(f"Gaussian Model – MAE: {mae_median:.2f} ± {mae_std:.2f}")
+print(f"Gaussian Model – RMSE: {rmse_median:.2f} ± {rmse_std:.2f}")
 \end{lstlisting}
 
 Obteniendo los siguientes resultados:
@@ -181,73 +237,21 @@ Obteniendo los siguientes resultados:
 
 \begin{table}[H]
 \centering
-\caption{Resultados del Modelo de Regresión Logística}\label{tab:regresion_resultados}
+\caption{Resultados del Modelo Lineal Gaussiano}\label{tab:regresion_resultados}
 \begin{tabular}{lcc}
-\toprule
-\textbf{Variable} & \textbf{Coeficiente} & \textbf{Impacto} \\
-\midrule
-Glucose & 1.011 & Alto riesgo \\
-BMI & 0.753 & Alto riesgo \\
-Pregnancies & 0.508 & Riesgo moderado \\
-Diabetes Pedigree & 0.375 & Riesgo moderado \\
-Blood Pressure & -0.267 & Factor protector \\
-Age & 0.109 & Riesgo bajo \\
-Skin Thickness & 0.021 & Riesgo mínimo \\
-Insulin & -0.005 & Factor protector \\
-\midrule
-\multicolumn{3}{c}{Exactitud del modelo: 78.5\%} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\subsubsection{Interpretación de los coeficientes}
-
-Los resultados del modelo de regresión logística revelan patrones significativos en la predicción de diabetes. El término independiente de -0.834 indica que cuando todas las variables están en su valor promedio (escaladas = 0), el log-odds de tener diabetes es negativo. Esto corresponde a una probabilidad base de aproximadamente 30.2\%, lo cual es consistente con la prevalencia de diabetes en la muestra.
-
-\subsubsection{Variables de Alto Impacto}
-
-\textbf{Glucose (1.011):} Representa el factor más crítico en la predicción de diabetes. Por cada desviación estándar de aumento en los niveles de glucosa, los odds de diabetes se multiplican por $e^{1.011} \approx 2.75$. Este resultado es médicamente coherente, ya que la hiperglucemia es el criterio diagnóstico principal para diabetes.
-
-\textbf{BMI (0.753):} El índice de masa corporal constituye el segundo predictor más importante. Un aumento de una desviación estándar en BMI multiplica los odds por $e^{0.753} \approx 2.12$, confirmando la fuerte asociación entre obesidad y diabetes tipo 2.
-
-\subsubsection{Variables de Impacto Moderado}
-
-\textbf{Pregnancies (0.508):} El número de embarazos muestra un efecto significativo, con un odds ratio de $e^{0.508} \approx 1.66$. Esto refleja el riesgo de diabetes gestacional y su progresión a diabetes tipo 2.
-
-\textbf{Diabetes Pedigree (0.375):} La función de pedigree diabético, que representa la predisposición genética, aumenta los odds en 46\% ($e^{0.375} \approx 1.46$), evidenciando la componente hereditaria de la enfermedad.
-
-\subsubsection{Hallazgos Particulares}
-
-\textbf{Blood Pressure (-0.267):} Sorprendentemente, la presión arterial muestra un coeficiente negativo, sugiriendo un efecto protector ($e^{-0.267} \approx 0.77$). Este resultado contraintuitivo requiere investigación adicional, ya que médicamente la hipertensión se asocia con mayor riesgo de diabetes.
-
-\subsubsection{Variables de Menor Impacto:} Age, skin thickness e insulin muestran efectos mínimos o neutros en el modelo, lo que puede indicar que su influencia está mediada por otras variables o que requieren transformaciones no lineales.
-
-\subsubsection{Rendimiento del Modelo}
-
-El modelo alcanza una exactitud del 78.5\% en el conjunto de entrenamiento, lo cual representa un desempeño satisfactorio para la predicción de diabetes. Este nivel de precisión sugiere que las variables seleccionadas capturan patrones relevantes, aunque existe margen de mejora.
-
-\subsubsection{Implicaciones Clínicas}
-
-Los resultados confirman la importancia del control glucémico y el mantenimiento de un peso saludable como estrategias primarias de prevención. La influencia significativa del historial de embarazos y la predisposición genética subraya la necesidad de monitoreo específico en poblaciones de riesgo.
-
-\subsubsection{Métricas de Rendimiento del Modelo Regresión Logistica}
-
-\begin{table}[H]
-\centering
-\caption{Métricas de Rendimiento del Modelo de Regresión Logística}\label{tab:logistic_resultados}
-\begin{tabular}{lc}
 \toprule
 \textbf{Métrica} & \textbf{Valor} \\
 \midrule
-Exactitud en entrenamiento & 78.5\% \\
-Exactitud en prueba & 74\% \\
-Precisión (clase 1) & 58.8\% \\
-Sensibilidad & 62.5\% \\
-F1-Score & 60.61\% \\
-AUC & 0.7096 \\
+MAE & 3.39 ± 0.22  \\
+RMSE & 4.91 ± 0.45  \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\subsubsection{Interpretación de los resultados}
+
+Los resultados del modelo lineal Gaussiano indica que la diferencia entre los valores reales de MEDV y los valores estimados por el modelo es de 3.39 mil dólares, con una variabilidad moderadamente baja.
+El RMSE, al ser más sensible a errores grandes, indica que las desviaciones cuadráticas promedio equivalen a unos 4.91 mil dólares, lo que sugiere que existen algunos errores más grandes, aunque no dominantes.
 
 \newpage
 
